@@ -9,5 +9,5 @@
 
     <!-- Agenda -->
     <string name="agenda_event_day_duration">d</string>
-    <string name="agenda_event_no_events">No events</string>
+    <string name="agenda_event_no_events">没有提醒、事件</string>
 </resources>

@@ -23,7 +23,7 @@
             <TextView
                 android:id="@+id/insert_update_title"
                 style="@style/ActivityTitleStyle"
-                android:text="新建活动"/>
+                android:text="新建提醒"/>
 
             <TextView
                 android:id="@+id/tv_save"

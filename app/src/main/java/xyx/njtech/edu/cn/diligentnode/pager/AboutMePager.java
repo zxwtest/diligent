@@ -16,13 +16,6 @@ import butterknife.ButterKnife;
 
 public class AboutMePager extends BasePager implements View.OnClickListener {
 
-    @Bind(R.id.about_bg)
-    LinearLayout about_bg;
-    @Bind(R.id.github)
-    TextView github;
-    @Bind(R.id.weibo)
-    TextView weibo;
-
     public AboutMePager(Activity mActivity) {
         super(mActivity);
     }
@@ -38,25 +31,9 @@ public class AboutMePager extends BasePager implements View.OnClickListener {
 
     @Override
     public void initData() {
-        about_bg.setOnClickListener(v -> BusProvider.getInstance().send(new Events.AgendaListViewTouchedEvent()));
-
-        github.setOnClickListener(this);
-        weibo.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.github:
-                Intent it1 = new Intent(Intent.ACTION_VIEW, Uri.parse(github.getText().toString()));
-                it1.setClassName("com.android.browser", "com.android.browser.BrowserActivity");
-                mActivity.startActivity(it1);
-                break;
-            case R.id.weibo:
-                Intent it2 = new Intent(Intent.ACTION_VIEW, Uri.parse(weibo.getText().toString()));
-                it2.setClassName("com.android.browser", "com.android.browser.BrowserActivity");
-                mActivity.startActivity(it2);
-                break;
-        }
     }
 }

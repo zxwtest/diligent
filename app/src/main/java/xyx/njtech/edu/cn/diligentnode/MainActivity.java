@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
      */
     private void showPermissionDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("弹窗需要开启权限哦~")
+        builder.setTitle("弹窗需要开启权限")
                 .setPositiveButton("开启", (dialog, which) -> {
                     requestAlertWindowPermission();
                 })
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
         rfaContent.setOnRapidFloatingActionContentLabelListListener(this);
         List<RFACLabelItem> items = new ArrayList<>();
         items.add(new RFACLabelItem<Integer>()
-                        .setLabel("活动")
+                        .setLabel("事件")
                         .setResId(R.drawable.ic_access_alarms_white_24dp)
                         .setIconNormalColor(0xffd84315)
                         .setIconPressedColor(0xffbf360c)

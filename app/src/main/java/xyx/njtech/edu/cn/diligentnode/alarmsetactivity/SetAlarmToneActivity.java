@@ -52,7 +52,7 @@ public class SetAlarmToneActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new SetAlarmToneAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, String data,int position) {
-                Toast.makeText(SetAlarmToneActivity.this, data + "-" + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SetAlarmToneActivity.this, data + "-" + position, Toast.LENGTH_SHORT).show();
                 toneName = data;
                 RingtoneManager rm = new RingtoneManager(SetAlarmToneActivity.this);
                 rm.setType(RingtoneManager.TYPE_RINGTONE);

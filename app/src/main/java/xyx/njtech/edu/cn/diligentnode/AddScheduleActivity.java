@@ -305,7 +305,7 @@ public class AddScheduleActivity extends AppCompatActivity {
                 window.setStatusBarColor(getResources().getColor(colorId));
             }
         } else {
-            insert_update_title.setText("新建活动");
+            insert_update_title.setText("新建提醒");
         }
     }
 
