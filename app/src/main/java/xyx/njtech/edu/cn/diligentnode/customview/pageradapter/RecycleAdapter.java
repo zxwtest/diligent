@@ -15,9 +15,6 @@ import xyx.njtech.edu.cn.diligentnode.utils.DateHelper;
 
 import java.util.List;
 
-/**
- * Created by acer-pc on 2016/5/12.
- */
 public class RecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private String tag;

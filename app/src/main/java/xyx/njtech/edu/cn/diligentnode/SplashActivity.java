@@ -124,7 +124,7 @@ public class SplashActivity extends AppCompatActivity {
                         jumpToNextPage();
                     }
                 };
-                timer.schedule(task,1500);
+                timer.schedule(task,100);
             }
         });
         requestQueue.add(request);

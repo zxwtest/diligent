@@ -6,12 +6,7 @@ import xyx.njtech.edu.cn.diligentnode.models.CalendarEvent;
 
 import java.lang.reflect.ParameterizedType;
 
-/**
- * Base class for helping layout rendering
- * 帮助 Layout 渲染的基类
- * Type 是 Java 编程语言中所有类型的公共高级接口。它们包括原始类型、参数化类型、数组类型、类型变量和基本类型。
- * 这个类也看不懂
- */
+
 public abstract class EventRenderer<T extends CalendarEvent> {
 
     // 初始化一些布局的信息
