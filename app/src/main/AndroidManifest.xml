@@ -33,6 +33,9 @@
         <activity android:name="xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetAlarmToneActivity"/>
         <activity android:name=".ScheduleDetailActivity"/>
         <activity android:name="xyx.njtech.edu.cn.diligentnode.AlarmRemindActivity"/>
+        <activity android:name=".NewActivity"/>
+        <activity android:name=".NoteActivity"/>
+        <activity android:name=".NoteDetailActivity"/>
 
         <service android:name="xyx.njtech.edu.cn.diligentnode.alarmremind.AlarmService"
             android:process="xyx.njtech.edu.cn.diligentnode.serviceProcess"
@@ -48,5 +51,12 @@
 
         <receiver android:name="xyx.njtech.edu.cn.diligentnode.alarmremind.AlarmAlertBroadcastReceiver">
         </receiver>
+
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

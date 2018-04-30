@@ -16,9 +16,6 @@ import xyx.njtech.edu.cn.diligentnode.AlarmBean;
 
 import java.io.IOException;
 
-/**
- * Created by acer-pc on 2016/4/21.
- */
 public class AlarmAlertBroadcastReceiver extends BroadcastReceiver {
 
     private MediaPlayer mediaPlayer;

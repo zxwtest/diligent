@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="xyx.njtech.edu.cn.diligentnode.ui.MainActivity">
+    <item
+        android:id="@+id/action_new_note"
+        android:orderInCategory="100"
+        android:title="新建"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_caledar"
+        android:orderInCategory="100"
+        android:title="日历"
+        app:showAsAction="always" />
+</menu>

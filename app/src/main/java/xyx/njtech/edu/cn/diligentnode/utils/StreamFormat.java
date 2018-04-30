@@ -4,9 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Created by acer-pc on 2016/3/10.
- */
 public class StreamFormat {
 
     public static String getTextFromStream(InputStream is){

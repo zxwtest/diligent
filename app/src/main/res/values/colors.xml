@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#323453</color>
-    <color name="colorPrimaryDark">#282942</color>
-    <color name="colorAccent">#03A9F4</color>
-
     <!-- Colors for Calendar view -->
     <color name="calendar_month_transparent_background">#70ffffff</color>
     <color name="calendar_text_default">#9C9CA0</color>
@@ -28,26 +24,41 @@
     <color name="juzihong">#E64A19</color>
     <color name="shenkonglan">#00537F</color>
 
-    <!--<color name="light_grey">#8C9CA4</color>-->
-    <!--<color name="white">#FFFFFF</color>-->
-    <!--<color name="divider_color">#DBDBDB</color>-->
-    <!--<color name="edge_color">#FFFFFF</color>-->
-    <!--<color name="fab">#F19BA2</color>-->
-    <!--<color name="fab_highlight">#CB747B</color>-->
-    <!--<color name="blue">#323453</color>-->
-    <!--<color name="green">#4E8186</color>-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 
-    <!--<color name="statusbar">#282942</color>-->
-    <!--<color name="statusbar2">#3E676B</color>-->
-    <!--<color name="text_primary">#727272</color>-->
-    <!--<color name="black">#000000</color>-->
-    <!--<color name="fab2">#DC8F9A</color>-->
-    <!--<color name="splash1">#F19BA2</color>-->
-    <!--<color name="splash2">#323453</color>-->
-    <!--<color name="splash3">#649692</color>-->
-    <!--<color name="splash4">#C68C94</color>-->
+    <!-- Grey-->
+    <color name="grey_000">#FFFFFF</color>
+    <color name="grey_050">#FAFAFA</color>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="grey_500">#9E9E9E</color>
+    <color name="grey_600">#757575</color>
+    <color name="grey_700">#616161</color>
+    <color name="grey_800">#424242</color>
+    <color name="grey_900">#212121</color>
 
-    <!--<color name="fire_end_color">#E89183</color>-->
-    <!--<color name="fire_start_color">#FCFBEB</color>-->
+    <color name="transparent">#00000000</color>
+    <color name="calendar_text_color_disable">#cccccc</color>
+    <color name="calendar_date_bg">#FCB058</color>
+    <color name="bg_white">#ffffff</color>
+    <color name="fsgm_blue">#49ADE9</color>
+    <color name="text_color_normal">#A0A0A0</color>
+    <color name="fsgm_colorWhite">#FFFFFFFF</color>
+    <color name="fsgm_弱字体">#4f4f4f</color>
+    <color name="fsgm_big_deivide">#f4f4f4</color>
+
+
+    <color name="normal_day">#424242</color>
+    <color name="selected_day_background">#03A9F4</color>
+    <color name="selected_day_text">#FFFFFF</color>
+    <color name="month_day_label_text">#757575</color>
+    <color name="weekends_day">#BDBDBD</color>
+    <color name="current_day_background">#DDDDDD</color>
+    <color name="normal_month">#03A9F4</color>
+    <color name="start_end_text_color">#FF0000</color>
 
 </resources>

@@ -3,9 +3,6 @@ package xyx.njtech.edu.cn.diligentnode.alarmremind;
 import android.app.Activity;
 import android.content.Intent;
 
-/**
- * Created by acer-pc on 2016/4/21.
- */
 public class SendAlarmBroadcast {
 
     public static void startAlarmService(Activity activity){

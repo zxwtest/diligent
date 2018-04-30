@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -239,9 +240,13 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
 
     }
 
+    //添加事件
     @Override
     public void onRFACItemLabelClick(int i, RFACLabelItem rfacLabelItem) {
-        Toast.makeText(this, "Click Label !", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, NoteActivity.class);
+        intent.putExtra("groupName", "默认");
+        intent.putExtra("flag", 0);
+        startActivity(intent);
     }
 
     @Override
