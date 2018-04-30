@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -119,14 +118,14 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
 
 
         //弹窗权限验证
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             isAllowAlert = PrefUtils.getBoolean(this,"isAllowAlert",false);
             if(!isAllowAlert){
                 showPermissionDialog();
             }
         }else {
             SendAlarmBroadcast.startAlarmService(this);
-        }
+        }*/
 
     }
 
@@ -218,12 +217,12 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
         rfaContent.setOnRapidFloatingActionContentLabelListListener(this);
         List<RFACLabelItem> items = new ArrayList<>();
         items.add(new RFACLabelItem<Integer>()
-                        .setLabel("事件")
-                        .setResId(R.drawable.ic_access_alarms_white_24dp)
-                        .setIconNormalColor(0xffd84315)
-                        .setIconPressedColor(0xffbf360c)
-                        .setLabelSizeSp(14)
-                        .setWrapper(0)
+                .setLabel("事件")
+                .setResId(R.drawable.ic_access_alarms_white_24dp)
+                .setIconNormalColor(0xffd84315)
+                .setIconPressedColor(0xffbf360c)
+                .setLabelSizeSp(14)
+                .setWrapper(0)
         );
         rfaContent
                 .setItems(items)
@@ -243,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
     //添加事件
     @Override
     public void onRFACItemLabelClick(int i, RFACLabelItem rfacLabelItem) {
-        Intent intent = new Intent(MainActivity.this, NoteActivity.class);
+        Intent intent = new Intent(MainActivity.this, NoteMainActivity.class);
         intent.putExtra("groupName", "默认");
         intent.putExtra("flag", 0);
         startActivity(intent);

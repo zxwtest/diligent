@@ -15,6 +15,7 @@ import android.view.View;
 
 import java.util.List;
 
+import butterknife.OnClick;
 import xyx.njtech.edu.cn.diligentnode.adapter.MyNoteListAdapter;
 import xyx.njtech.edu.cn.diligentnode.bean.Note;
 import xyx.njtech.edu.cn.diligentnode.db.NoteDao;
@@ -23,7 +24,7 @@ import xyx.njtech.edu.cn.diligentnode.view.SpacesItemDecoration;
 /**
  * 主界面
  */
-public class NoteActivity extends BaseActivity {
+public class NoteMainActivity extends BaseActivity {
     private static final String TAG = "NoteActivity";
     private RecyclerView rv_list_main;
     private MyNoteListAdapter mNoteListAdapter;
@@ -46,13 +47,21 @@ public class NoteActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restart();
+            }
+        });
+
+
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_main);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "新建笔记", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Intent intent = new Intent(NoteActivity.this, NewActivity.class);
+                Intent intent = new Intent(NoteMainActivity.this, NewActivity.class);
                 intent.putExtra("groupName", groupName);
                 intent.putExtra("flag", 0);
                 startActivity(intent);
@@ -78,7 +87,7 @@ public class NoteActivity extends BaseActivity {
             public void onItemClick(View view, Note note) {
                 showToast(note.getTitle());
 
-                Intent intent = new Intent(NoteActivity.this, NoteDetailActivity.class);
+                Intent intent = new Intent(NoteMainActivity.this, NoteDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("note", note);
                 intent.putExtra("data", bundle);
@@ -88,7 +97,7 @@ public class NoteActivity extends BaseActivity {
         mNoteListAdapter.setOnItemLongClickListener(new MyNoteListAdapter.OnRecyclerViewItemLongClickListener() {
             @Override
             public void onItemLongClick(View view, final Note note) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(NoteActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(NoteMainActivity.this);
                 builder.setTitle("提示");
                 builder.setMessage("确定删除笔记？");
                 builder.setCancelable(false);
@@ -117,9 +126,21 @@ public class NoteActivity extends BaseActivity {
         mNoteListAdapter.notifyDataSetChanged();
     }
 
+    private void restart(){
+        Intent intent = new Intent(NoteMainActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+        refreshNoteList();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     @Override
@@ -129,15 +150,15 @@ public class NoteActivity extends BaseActivity {
 
 
     @Override
-    public void onBackPressed() {
-        finish();
-    }
-
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @OnClick(R.id.left_clear)
+    void clear() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     @Override
@@ -145,16 +166,13 @@ public class NoteActivity extends BaseActivity {
         Intent intent;
         switch (item.getItemId()) {
             case R.id.action_new_note:
-                intent = new Intent(NoteActivity.this, NewActivity.class);
+                intent = new Intent(NoteMainActivity.this, NewActivity.class);
                 intent.putExtra("groupName", groupName);
                 intent.putExtra("flag", 0);
                 startActivity(intent);
                 break;
             case R.id.action_caledar:
-                intent = new Intent(NoteActivity.this, MainActivity.class);
-                intent.putExtra("groupName", groupName);
-                intent.putExtra("flag", 0);
-                startActivity(intent);
+                restart();
                 break;
         }
         return super.onOptionsItemSelected(item);
