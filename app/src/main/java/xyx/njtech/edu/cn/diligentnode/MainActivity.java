@@ -216,8 +216,33 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
         RapidFloatingActionContentLabelList rfaContent = new RapidFloatingActionContentLabelList(this);
         rfaContent.setOnRapidFloatingActionContentLabelListListener(this);
         List<RFACLabelItem> items = new ArrayList<>();
+
+        items.add(new RFACLabelItem<Integer>()
+                .setLabel("私密")
+                .setResId(R.drawable.ic_lock_white_18dp)
+                .setIconNormalColor(0xffd84315)
+                .setIconPressedColor(0xffbf360c)
+                .setLabelSizeSp(14)
+                .setWrapper(0)
+        );
+        items.add(new RFACLabelItem<Integer>()
+                .setLabel("便签")
+                .setResId(R.drawable.ic_format_list_bulleted_white_24dp)
+                .setIconNormalColor(0xffd84315)
+                .setIconPressedColor(0xffbf360c)
+                .setLabelSizeSp(14)
+                .setWrapper(0)
+        );
         items.add(new RFACLabelItem<Integer>()
                 .setLabel("事件")
+                .setResId(R.drawable.ic_create_white_24dp)
+                .setIconNormalColor(0xffd84315)
+                .setIconPressedColor(0xffbf360c)
+                .setLabelSizeSp(14)
+                .setWrapper(0)
+        );
+        items.add(new RFACLabelItem<Integer>()
+                .setLabel("提醒")
                 .setResId(R.drawable.ic_access_alarms_white_24dp)
                 .setIconNormalColor(0xffd84315)
                 .setIconPressedColor(0xffbf360c)
@@ -242,19 +267,21 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
     //添加事件
     @Override
     public void onRFACItemLabelClick(int i, RFACLabelItem rfacLabelItem) {
-        Intent intent = new Intent(MainActivity.this, NoteMainActivity.class);
-        intent.putExtra("groupName", "默认");
-        intent.putExtra("flag", 0);
-        startActivity(intent);
+
     }
 
     @Override
     public void onRFACItemIconClick(int i, RFACLabelItem rfacLabelItem) {
-        if (i == 0) {
+        if (i == 3) {
             Intent intent = new Intent(MainActivity.this, AddScheduleActivity.class);
             intent.putExtra("type","mainToAdd");
             startActivity(intent);
             finish();
+        }else if (i == 2) {
+            Intent intent = new Intent(MainActivity.this, NoteMainActivity.class);
+            intent.putExtra("groupName", "默认");
+            intent.putExtra("flag", 0);
+            startActivity(intent);
         }
     }
 
