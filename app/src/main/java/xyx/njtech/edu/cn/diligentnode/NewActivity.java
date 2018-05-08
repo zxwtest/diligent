@@ -58,6 +58,7 @@ public class NewActivity extends BaseActivity implements RichTextEditor.OnDelete
     private String myTitle;
     private String myContent;
     private String myGroupName;
+    private int groupId = 1;//分类ID
     private String myNoteTime;
     private int flag;//区分是新建笔记还是编辑笔记
 
@@ -91,6 +92,10 @@ public class NewActivity extends BaseActivity implements RichTextEditor.OnDelete
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_new);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Intent intent =getIntent();
+        groupId = intent.getIntExtra("groupId", 1);
+
         //toolbar.setNavigationIcon(R.drawable.ic_dialog_info);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +129,6 @@ public class NewActivity extends BaseActivity implements RichTextEditor.OnDelete
         tv_new_time = (TextView) findViewById(R.id.tv_new_time);
         tv_new_group = (TextView) findViewById(R.id.tv_new_group);
 
-        Intent intent = getIntent();
         flag = intent.getIntExtra("flag", 0);//0新建，1编辑
         if (flag == 1){//编辑
             Bundle bundle = intent.getBundleExtra("data");
@@ -155,10 +159,9 @@ public class NewActivity extends BaseActivity implements RichTextEditor.OnDelete
             });
         } else {
             setTitle("新建笔记");
-            if (myGroupName == null || "全部笔记".equals(myGroupName)) {
-                myGroupName = "默认笔记";
-            }
-            tv_new_group.setText(myGroupName);
+            Group group = groupDao.queryGroupById(groupId);
+            System.out.println(groupId + "=====groupName==="+group.getName());
+            tv_new_group.setText(group.getName());
             myNoteTime = CommonUtil.date2string(new Date());
             tv_new_time.setText(myNoteTime);
         }
@@ -255,7 +258,8 @@ public class NewActivity extends BaseActivity implements RichTextEditor.OnDelete
         String groupName = tv_new_group.getText().toString();
         String noteTime = tv_new_time.getText().toString();
 
-        Group group = groupDao.queryGroupByName(myGroupName);
+        System.out.println("======saveNoteData======"+groupId);
+        Group group = groupDao.queryGroupById(groupId);
         if (group != null) {
             if (noteTitle.length() == 0 ){//如果标题为空，则截取内容为标题
                 if (noteContent.length() > cutTitleLength){

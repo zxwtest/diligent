@@ -10,5 +10,7 @@
         <attr name="calendarCurrentDayTextColor" format="color" />
     </declare-styleable>
 
-
+    <declare-styleable name="ThemeChoiceRadioButton">
+        <attr name="backgroundColor" format="color"/>
+    </declare-styleable>
 </resources>

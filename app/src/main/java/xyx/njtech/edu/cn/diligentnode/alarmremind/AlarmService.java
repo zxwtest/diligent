@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import xyx.njtech.edu.cn.diligentnode.AlarmBean;
-import xyx.njtech.edu.cn.diligentnode.database.AlarmDBSupport;
+import xyx.njtech.edu.cn.diligentnode.db.AlarmDBSupport;
 
 import java.util.Collections;
 import java.util.Comparator;

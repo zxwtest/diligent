@@ -1,4 +1,4 @@
-package xyx.njtech.edu.cn.diligentnode.database;
+package xyx.njtech.edu.cn.diligentnode.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-/**
- * Created by acer-pc on 2016/4/18.
- */
 public class AlarmDBSupport {
 
     private Context context;

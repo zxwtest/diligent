@@ -29,7 +29,7 @@ public class NoteDao {
      */
     public List<Note> queryNotesAll(int groupId) {
         SQLiteDatabase db = helper.getWritableDatabase();
-
+System.out.println("============groupId==22="+groupId);
         List<Note> noteList = new ArrayList<>();
         Note note ;
         String sql ;
@@ -37,7 +37,7 @@ public class NoteDao {
         try {
             if (groupId > 0){
                 sql = "select * from db_note where n_group_id =" + groupId +
-                        "order by n_create_time desc";
+                        " order by n_create_time desc";
             } else {
                 sql = "select * from db_note " ;
             }

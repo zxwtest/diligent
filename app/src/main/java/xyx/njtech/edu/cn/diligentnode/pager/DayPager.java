@@ -6,12 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import xyx.njtech.edu.cn.diligentnode.R;
 import xyx.njtech.edu.cn.diligentnode.ScheduleDetailActivity;
 import xyx.njtech.edu.cn.diligentnode.customview.pageradapter.RecycleAdapter;
-import xyx.njtech.edu.cn.diligentnode.database.AlarmDBSupport;
+import xyx.njtech.edu.cn.diligentnode.db.AlarmDBSupport;
 import xyx.njtech.edu.cn.diligentnode.utils.BusProvider;
 import xyx.njtech.edu.cn.diligentnode.utils.Events;
 

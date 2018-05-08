@@ -30,7 +30,7 @@ public class NoteMainActivity extends BaseActivity {
     private MyNoteListAdapter mNoteListAdapter;
     private List<Note> noteList;
     private NoteDao noteDao;
-    private int groupId;//分类ID
+    private int groupId = 1;//分类ID
     private String groupName;
 
     @Override
@@ -47,6 +47,9 @@ public class NoteMainActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Intent intent =getIntent();
+        groupId = intent.getIntExtra("groupId", 1);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,10 +62,10 @@ public class NoteMainActivity extends BaseActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "新建笔记", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "新建", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 Intent intent = new Intent(NoteMainActivity.this, NewActivity.class);
-                intent.putExtra("groupName", groupName);
+                intent.putExtra("groupId", groupId);
                 intent.putExtra("flag", 0);
                 startActivity(intent);
             }
@@ -99,7 +102,7 @@ public class NoteMainActivity extends BaseActivity {
             public void onItemLongClick(View view, final Note note) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(NoteMainActivity.this);
                 builder.setTitle("提示");
-                builder.setMessage("确定删除笔记？");
+                builder.setMessage("确定删除记录？");
                 builder.setCancelable(false);
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -167,7 +170,7 @@ public class NoteMainActivity extends BaseActivity {
         switch (item.getItemId()) {
             case R.id.action_new_note:
                 intent = new Intent(NoteMainActivity.this, NewActivity.class);
-                intent.putExtra("groupName", groupName);
+                intent.putExtra("groupId", groupId);
                 intent.putExtra("flag", 0);
                 startActivity(intent);
                 break;

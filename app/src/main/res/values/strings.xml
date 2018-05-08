@@ -9,7 +9,7 @@
 
     <!-- Agenda -->
     <string name="agenda_event_day_duration">d</string>
-    <string name="agenda_event_no_events">没有提醒、事件</string>
+    <string name="agenda_event_no_events">没有提醒</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_new">NewActivity</string>
@@ -29,4 +29,10 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <string name="alipay_qr_code">HTTPS://QR.ALIPAY.COM/FKX02204SZGKIYYQSFPR54</string>
+    <string name="my_email">i_fadai@163.com</string>
+    <string name="github"><u>https://github.com/ifadai</u></string>
+    <string name="jian_shu"><u>http://www.jianshu.com/u/707e22330793</u></string>
+    <string name="csdn"><u>http://blog.csdn.net/ifadai</u></string>
+    <string name="app_github">本软件已开源，地址：<u>https://github.com/ifadai/SuperNote</u></string>
 </resources>

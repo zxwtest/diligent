@@ -20,15 +20,13 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import xyx.njtech.edu.cn.diligentnode.AlarmBean;
-import xyx.njtech.edu.cn.diligentnode.MainActivity;
 import xyx.njtech.edu.cn.diligentnode.alarmremind.SendAlarmBroadcast;
 import xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetAlarmTimeActivity;
 import xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetAlarmToneActivity;
 import xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetColorActivity;
 import xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetLocalActivity;
 import xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetRePlayActivity;
-import xyx.njtech.edu.cn.diligentnode.database.AlarmDBSupport;
+import xyx.njtech.edu.cn.diligentnode.db.AlarmDBSupport;
 import xyx.njtech.edu.cn.diligentnode.utils.ColorUtils;
 
 import java.text.SimpleDateFormat;

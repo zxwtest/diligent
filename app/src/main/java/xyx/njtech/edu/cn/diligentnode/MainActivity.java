@@ -1,6 +1,7 @@
 package xyx.njtech.edu.cn.diligentnode;
 
 import android.annotation.TargetApi;
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -21,16 +22,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.Utils;
 import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionButton;
 import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionHelper;
 import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout;
 import com.wangjie.rapidfloatingactionbutton.contentimpl.labellist.RFACLabelItem;
 import com.wangjie.rapidfloatingactionbutton.contentimpl.labellist.RapidFloatingActionContentLabelList;
-import xyx.njtech.edu.cn.diligentnode.alarmremind.SendAlarmBroadcast;
+
+import xyx.njtech.edu.cn.diligentnode.contants.NoteListConstans;
 import xyx.njtech.edu.cn.diligentnode.customview.calendar.CalendarView;
 import xyx.njtech.edu.cn.diligentnode.fragment.ContentFragment;
+import xyx.njtech.edu.cn.diligentnode.lock.modification.LockModificationActivity;
+import xyx.njtech.edu.cn.diligentnode.lock.verification.LockActivity;
 import xyx.njtech.edu.cn.diligentnode.utils.BusProvider;
 import xyx.njtech.edu.cn.diligentnode.utils.CalendarManager;
+import xyx.njtech.edu.cn.diligentnode.contants.Constans;
 import xyx.njtech.edu.cn.diligentnode.utils.Events;
 import xyx.njtech.edu.cn.diligentnode.utils.PrefUtils;
 
@@ -44,6 +50,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener {
+    public static final int REQUEST_TO_LOCK = 1;
+
+    public static final int REQUEST_TO_MODIFY_LOCK = 2;
 
     //侧边栏布局
     @Bind(R.id.main_draw_layout)
@@ -114,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
         initLayoutView();
         setMonthTitle();
         initFab();
+
+        Utils.init(getApplicationContext());
 
 
 
@@ -234,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
                 .setWrapper(0)
         );
         items.add(new RFACLabelItem<Integer>()
-                .setLabel("事件")
+                .setLabel("普通")
                 .setResId(R.drawable.ic_create_white_24dp)
                 .setIconNormalColor(0xffd84315)
                 .setIconPressedColor(0xffbf360c)
@@ -279,9 +290,40 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
             finish();
         }else if (i == 2) {
             Intent intent = new Intent(MainActivity.this, NoteMainActivity.class);
-            intent.putExtra("groupName", "默认");
+            intent.putExtra("groupId", 1);
+            startActivity(intent);
+        }else if (i == 1) {
+            Intent intent = new Intent(MainActivity.this, NoteMainActivity.class);
+            intent.putExtra("groupId", 2);
             intent.putExtra("flag", 0);
             startActivity(intent);
+        }else if(i == 0) {
+            Intent intent;
+            if (Constans.isLocked) {
+                System.out.println("=================lockActivity=========");
+                intent = new Intent(MainActivity.this, LockActivity.class);
+            } else {
+                System.out.println("=================LockModificationActivity=========");
+                intent = new Intent(MainActivity.this, LockModificationActivity.class);
+            }
+
+            // 5.0及以上则使用Activity动画
+            if (Build.VERSION.SDK_INT >= 21) {
+                Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+                startActivityForResult(intent, NoteListConstans.REQUEST_CODE_LOCK, bundle);
+            } else {
+                startActivityForResult(intent, NoteListConstans.REQUEST_CODE_LOCK);
+            }
+        }
+    }
+
+    private void startActivityForAnim(Intent intent,int requestCode){
+        // 5.0及以上则使用Activity动画
+        if(Build.VERSION.SDK_INT>=21){
+            Bundle bundle= ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle();
+            MainActivity.this.startActivityForResult(intent, requestCode, bundle);
+        } else {
+            MainActivity.this.startActivityForResult(intent, requestCode);
         }
     }
 
@@ -302,7 +344,12 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE) {
+        System.out.println(requestCode + "====" + requestCode);
+        if (requestCode == 1 && resultCode == -1) {
+            Intent intent = new Intent(MainActivity.this, NoteMainActivity.class);
+            intent.putExtra("groupId", 3);
+            startActivity(intent);
+        } else if (requestCode == REQUEST_CODE) {
             if (Settings.canDrawOverlays(this)) {
                 Toast.makeText(this,"弹窗权限开启！",Toast.LENGTH_SHORT).show();
                 PrefUtils.setBoolean(MainActivity.this, "isAllowAlert", true);

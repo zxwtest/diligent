@@ -12,10 +12,8 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import xyx.njtech.edu.cn.diligentnode.AlarmBean;
-import xyx.njtech.edu.cn.diligentnode.MainActivity;
 import xyx.njtech.edu.cn.diligentnode.alarmremind.SendAlarmBroadcast;
-import xyx.njtech.edu.cn.diligentnode.database.AlarmDBSupport;
+import xyx.njtech.edu.cn.diligentnode.db.AlarmDBSupport;
 import xyx.njtech.edu.cn.diligentnode.utils.ColorUtils;
 
 import java.text.SimpleDateFormat;

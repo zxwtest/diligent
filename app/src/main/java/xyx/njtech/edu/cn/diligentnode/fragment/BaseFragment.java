@@ -8,10 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * fragment的基类
- * Created by acer-pc on 2016/3/11.
- */
 public abstract class BaseFragment extends Fragment{
 
     public Activity mActivity;

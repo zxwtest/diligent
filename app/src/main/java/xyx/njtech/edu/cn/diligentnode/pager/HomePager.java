@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import xyx.njtech.edu.cn.diligentnode.AlarmBean;
 import xyx.njtech.edu.cn.diligentnode.MainActivity;
@@ -19,7 +18,7 @@ import xyx.njtech.edu.cn.diligentnode.customview.agenda.AgendaView;
 import xyx.njtech.edu.cn.diligentnode.customview.calendar.CalendarView;
 import xyx.njtech.edu.cn.diligentnode.customview.render.DefaultEventRenderer;
 import xyx.njtech.edu.cn.diligentnode.customview.render.EventRenderer;
-import xyx.njtech.edu.cn.diligentnode.database.AlarmDBSupport;
+import xyx.njtech.edu.cn.diligentnode.db.AlarmDBSupport;
 import xyx.njtech.edu.cn.diligentnode.models.BaseCalendarEvent;
 import xyx.njtech.edu.cn.diligentnode.models.CalendarEvent;
 import xyx.njtech.edu.cn.diligentnode.utils.CalendarManager;

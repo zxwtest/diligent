@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import xyx.njtech.edu.cn.diligentnode.MainActivity;
 
 import xyx.njtech.edu.cn.diligentnode.R;
-import xyx.njtech.edu.cn.diligentnode.database.AlarmDBSupport;
+import xyx.njtech.edu.cn.diligentnode.db.AlarmDBSupport;
 import xyx.njtech.edu.cn.diligentnode.models.CalendarEvent;
 import xyx.njtech.edu.cn.diligentnode.pager.AboutMePager;
 import xyx.njtech.edu.cn.diligentnode.pager.BasePager;
