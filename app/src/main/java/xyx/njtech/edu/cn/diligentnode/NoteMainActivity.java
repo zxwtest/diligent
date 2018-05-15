@@ -2,12 +2,15 @@ package xyx.njtech.edu.cn.diligentnode;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +27,7 @@ import xyx.njtech.edu.cn.diligentnode.view.SpacesItemDecoration;
 /**
  * 主界面
  */
-public class NoteMainActivity extends BaseActivity {
+public class NoteMainActivity  extends BaseActivity {
     private static final String TAG = "NoteActivity";
     private RecyclerView rv_list_main;
     private MyNoteListAdapter mNoteListAdapter;
@@ -32,6 +35,7 @@ public class NoteMainActivity extends BaseActivity {
     private NoteDao noteDao;
     private int groupId = 1;//分类ID
     private String groupName;
+    private MenuItem mSearchMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,8 +158,15 @@ public class NoteMainActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        initOptionMemu(menu);
         return true;
+    }
+
+    public void initOptionMemu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        mSearchMenu = menu.findItem(R.id.menu_note_search);
+        initSearchMenu(mSearchMenu);
     }
 
     @OnClick(R.id.left_clear)
@@ -180,4 +191,52 @@ public class NoteMainActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void initSearchMenu(MenuItem searchItem) {
+        /*SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        // 搜索View的文字改变事件
+        searchView.setOnQueryTextListener(qreryTextListener);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            MenuItemCompat.setOnActionExpandListener(searchItem,
+                    new MenuItemCompat.OnActionExpandListener() {
+                        @Override
+                        public boolean onMenuItemActionExpand(MenuItem menuItem) {
+                            return true;
+                        }
+
+                        @Override
+                        public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+                            //mPresenter.cancelFilter();
+                            //mPresenter.setOutSearch();
+                            return true;
+                        }
+                    });
+        } else {
+            searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+                @Override
+                public boolean onClose() {
+                    //mPresenter.setOutSearch();
+                    //mPresenter.cancelFilter();
+                    return true;
+                }
+            });
+        }*/
+    }
+
+    /**
+     * toolbar的SearchView的文字改变事件
+     */
+    private SearchView.OnQueryTextListener qreryTextListener = new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            //mPresenter.setFilter(newText);
+            return true;
+        }
+    };
 }

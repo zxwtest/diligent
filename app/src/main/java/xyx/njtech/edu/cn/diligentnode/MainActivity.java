@@ -110,6 +110,13 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
         calendar_view.scrollToDate(CalendarManager.getInstance().getToday(), CalendarManager.getInstance().getWeeks());
     }
 
+    //天气
+    @OnClick(R.id.go_weather)
+    void goWeather() {
+        Intent intent = new Intent(MainActivity.this, WeatherMainActivity.class);
+        startActivity(intent);
+    }
+
     private boolean isAllowAlert = false;
 
     @Override

@@ -29,7 +29,6 @@ public class NoteDao {
      */
     public List<Note> queryNotesAll(int groupId) {
         SQLiteDatabase db = helper.getWritableDatabase();
-System.out.println("============groupId==22="+groupId);
         List<Note> noteList = new ArrayList<>();
         Note note ;
         String sql ;
@@ -38,6 +37,55 @@ System.out.println("============groupId==22="+groupId);
             if (groupId > 0){
                 sql = "select * from db_note where n_group_id =" + groupId +
                         " order by n_create_time desc";
+            } else {
+                sql = "select * from db_note " ;
+            }
+            cursor = db.rawQuery(sql, null);
+            //cursor = db.query("note", null, null, null, null, null, "n_id desc");
+            while (cursor.moveToNext()) {
+                //循环获得展品信息
+                note = new Note();
+                note.setId(cursor.getInt(cursor.getColumnIndex("n_id")));
+                note.setTitle(cursor.getString(cursor.getColumnIndex("n_title")));
+                note.setContent(cursor.getString(cursor.getColumnIndex("n_content")));
+                note.setGroupId(cursor.getInt(cursor.getColumnIndex("n_group_id")));
+                note.setGroupName(cursor.getString(cursor.getColumnIndex("n_group_name")));
+                note.setType(cursor.getInt(cursor.getColumnIndex("n_type")));
+                note.setBgColor(cursor.getString(cursor.getColumnIndex("n_bg_color")));
+                note.setIsEncrypt(cursor.getInt(cursor.getColumnIndex("n_encrypt")));
+                note.setCreateTime(cursor.getString(cursor.getColumnIndex("n_create_time")));
+                note.setUpdateTime(cursor.getString(cursor.getColumnIndex("n_update_time")));
+                noteList.add(note);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return noteList;
+    }
+
+    /**
+     * 查询所有笔记
+     */
+    public List<Note> queryNotesByGroupIdAndName(int groupId, String groupName) {
+        SQLiteDatabase db = helper.getWritableDatabase();
+        List<Note> noteList = new ArrayList<>();
+        Note note ;
+        String sql ;
+        Cursor cursor = null;
+        try {
+            if (groupId > 0){
+                sql = "select * from db_note where n_group_id =" + groupId;
+                if(groupName != null && !"".equals(groupName.trim())) {
+                    sql += " and n_group_name like '%" + groupName + "%'";
+                }
+                sql += " order by n_create_time desc";
             } else {
                 sql = "select * from db_note " ;
             }

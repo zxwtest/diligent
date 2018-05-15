@@ -54,6 +54,10 @@
                 </LinearLayout>
 
                 <ImageButton
+                    android:id="@+id/go_weather"
+                    style="@style/imageButtonStyle"
+                    android:src="@drawable/ic_weather" />
+                <ImageButton
                     android:id="@+id/go_today"
                     style="@style/imageButtonStyle"
                     android:src="@drawable/ic_today_white_24dp" />

@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
@@ -35,6 +36,8 @@
         <activity android:name="xyx.njtech.edu.cn.diligentnode.AlarmRemindActivity"/>
         <activity android:name=".NewActivity"/>
         <activity android:name=".NoteMainActivity"/>
+        <activity android:name=".WeatherMainActivity"/>
+        <activity android:name=".WeatherActivity"/>
         <activity android:name=".NoteDetailActivity"/>
         <activity android:name=".lock.verification.LockActivity"/>
         <activity android:name=".lock.modification.LockModificationActivity"/>
@@ -60,5 +63,10 @@
         <activity
             android:name="me.iwf.photopicker.PhotoPagerActivity"
             android:screenOrientation="portrait" />
+
+        <service
+            android:name=".service.AutoUpdateService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 </manifest>
