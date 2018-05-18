@@ -88,9 +88,6 @@ public class SplashActivity extends AppCompatActivity {
                     mDesc = response.getString("description");
                     mdownloadUrl = response.getString("downloadUrl");
 
-                    System.out.println("versionName="+mVersionName+"versionCode"+mVersionCode);
-                    System.out.println("mdownloadUrl------------"+mdownloadUrl);
-
                     if(mVersionCode>getVersionCode()){
 
                         //如果服务器返回的versionCode大于本地的versionCode,说明有更新
@@ -173,7 +170,6 @@ public class SplashActivity extends AppCompatActivity {
         builder.setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                System.out.println("立即更新");
                 //下载APK
                 downLoadAPK();
 
@@ -235,13 +231,11 @@ public class SplashActivity extends AppCompatActivity {
                                 }
                             }
 
-                            System.out.println("下载成功!");
                             //跳转至系统安装界面
                             Intent intent = new Intent(Intent.ACTION_VIEW);
                             intent.addCategory(Intent.CATEGORY_DEFAULT);
                             intent.setDataAndType(Uri.fromFile(file),
                                     "application/vnd.android.package-archive");
-//                    startActivity(intent);如果用户点取消同样返回主界面
                             startActivityForResult(intent,0);
 
 

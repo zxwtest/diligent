@@ -10,7 +10,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,7 +34,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class WeatherActivity extends AppCompatActivity {
+public class WeatherActivity  extends BaseActivity {
 
     public DrawerLayout drawerLayout;
 
@@ -75,6 +77,11 @@ public class WeatherActivity extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
+
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_weather);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+
         setContentView(R.layout.activity_weather);
         // 初始化各控件
         bingPicImg = (ImageView) findViewById(R.id.bing_pic_img);
@@ -166,6 +173,12 @@ public class WeatherActivity extends AppCompatActivity {
             }
         });
         loadBingPic();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     /**

@@ -1,15 +1,5 @@
 package xyx.njtech.edu.cn.diligentnode.contants;
 
-/**
- * <pre>
- *     author : FaDai
- *     e-mail : i_fadai@163.com
- *     time   : 2017/06/19
- *     desc   : xxxx描述
- *     version: 1.0
- * </pre>
- */
-
 public class FolderListConstans {
 
     public static final int ITEM_ALL=-1;

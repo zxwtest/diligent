@@ -23,5 +23,10 @@
             android:checkable="true"
             android:icon="@drawable/ic_android_grey_900_24dp"
             android:title="帮助" />
+        <item
+            android:id="@+id/settings"
+            android:checkable="true"
+            android:icon="@drawable/ic_settings_white_18dp"
+            android:title="设置" />
     </group>
 </menu>

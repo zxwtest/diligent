@@ -147,6 +147,7 @@ public class LockModificationActivity extends MemoBaseActivity<ILockModification
     }
 
     private void savePasswordAndResult() {
+        System.out.println("===============lockModificationActivity==="+mPassword);
         CacheManager.setAndSaveIsLocked(true);
         CacheManager.setAndSaveLockPassword(mPassword);
         setResult(RESULT_OK, new Intent());

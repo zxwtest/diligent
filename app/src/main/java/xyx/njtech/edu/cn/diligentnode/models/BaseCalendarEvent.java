@@ -214,8 +214,6 @@ public class BaseCalendarEvent implements CalendarEvent {
         this.mInstanceDay.set(Calendar.SECOND, 0);
         this.mInstanceDay.set(Calendar.MILLISECOND, 0);
         this.mInstanceDay.set(Calendar.AM_PM, 0);
-
-//        System.out.println("setInstanceDay:"+mInstanceDay.toString());
     }
 
     public Calendar getEndTime() {
@@ -324,16 +322,6 @@ public class BaseCalendarEvent implements CalendarEvent {
 
     @Override
     public String toString() {
-        return "BaseCalendarEvent{" +
-                "mId=" + mId +
-                ", mColor=" + mColor +
-                ", mTitle='" + mTitle + '\'' +
-                ", mDescription='" + mDescription + '\'' +
-                ", mLocation='" + mLocation + '\'' +
-                ", mStartTime=" + mStartTime +
-                ", mEndTime=" + mEndTime +
-                ", mAllDay=" + mAllDay +
-                ", mStartAndEndTime='" + mStartAndEndTime + '\'' +
-                '}';
+        return "";
     }
 }

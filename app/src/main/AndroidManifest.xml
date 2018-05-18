@@ -39,8 +39,16 @@
         <activity android:name=".WeatherMainActivity"/>
         <activity android:name=".WeatherActivity"/>
         <activity android:name=".NoteDetailActivity"/>
+        <activity android:name=".pager.AboutMeActivity"/>
         <activity android:name=".lock.verification.LockActivity"/>
         <activity android:name=".lock.modification.LockModificationActivity"/>
+        <activity android:name=".setting.main.SettingMainActivity"/>
+        <activity android:name=".setting.lock.LockSettingActivity">
+            <intent-filter>
+                <action android:name="xyx.njtech.edu.cn.diligentnode.LOCK_SETTING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <service android:name="xyx.njtech.edu.cn.diligentnode.alarmremind.AlarmService"
             android:process="xyx.njtech.edu.cn.diligentnode.serviceProcess"

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="通用"
+        android:key="pref_cate_base">
+        <xyx.njtech.edu.cn.diligentnode.widget.ThemeChoicePreference
+            android:key="theme" />
+        <PreferenceScreen
+            android:title="隐私密码"
+            android:key="screen_lock">
+            <intent
+                android:action="xyx.njtech.edu.cn.diligentnode.LOCK_SETTING" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+</PreferenceScreen>

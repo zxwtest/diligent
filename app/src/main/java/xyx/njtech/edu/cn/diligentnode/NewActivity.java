@@ -160,7 +160,6 @@ public class NewActivity extends BaseActivity implements RichTextEditor.OnDelete
         } else {
             setTitle("新建笔记");
             Group group = groupDao.queryGroupById(groupId);
-            System.out.println(groupId + "=====groupName==="+group.getName());
             tv_new_group.setText(group.getName());
             myNoteTime = CommonUtil.date2string(new Date());
             tv_new_time.setText(myNoteTime);
@@ -258,7 +257,6 @@ public class NewActivity extends BaseActivity implements RichTextEditor.OnDelete
         String groupName = tv_new_group.getText().toString();
         String noteTime = tv_new_time.getText().toString();
 
-        System.out.println("======saveNoteData======"+groupId);
         Group group = groupDao.queryGroupById(groupId);
         if (group != null) {
             if (noteTitle.length() == 0 ){//如果标题为空，则截取内容为标题

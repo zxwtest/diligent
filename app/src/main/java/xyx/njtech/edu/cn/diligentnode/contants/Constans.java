@@ -12,15 +12,6 @@ public class Constans {
     // 主题
     public static int theme = R.style.NoActionBar_Theme7;
 
-    // 当前选中的便签夹
-    public static int currentFolder = FolderListConstans.ITEM_ALL;
-
-    // 便签显示样式
-    public static int noteListShowMode = NoteListConstans.MODE_GRID;
-
-    // 是否已启用废纸篓
-    public static boolean isUseRecycleBin = true;
-
     // 是否已设置隐私密码
     public static boolean isLocked = false;
 

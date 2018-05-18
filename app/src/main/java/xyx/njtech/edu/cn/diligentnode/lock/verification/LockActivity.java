@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,6 +81,8 @@ public class LockActivity extends MemoBaseActivity<ILockView, LockPresenter> imp
 
     @Override
     protected void initViews() {
+        System.out.println("==========LockActivity initViews=========");
+        Log.e("LockActivity", "================enter initView==========");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initData();
         setTitle(mTitle);
@@ -104,6 +107,7 @@ public class LockActivity extends MemoBaseActivity<ILockView, LockPresenter> imp
 
     @Override
     public void onError() {
+        System.out.println("========enter 请重试========");
         mTvTip.setText("请重试");
         ObjectAnimator animator = ObjectAnimator.ofFloat(mTvTip, "translationX", -SizeUtils.dp2px(8), SizeUtils.dp2px(8), 0);
         animator.setDuration(200);
@@ -118,13 +122,13 @@ public class LockActivity extends MemoBaseActivity<ILockView, LockPresenter> imp
 
     @Override
     public boolean onDrawFinished(List<Integer> passPositions) {
+        System.out.println("===========lockPassword===["+Constans.LOCK_PASSWORD+"],passPositions=["+passPositions+"]");
         return mPresenter.verifyPassword(passPositions, Constans.lockPassword);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_lock, menu);
         return true;
     }
@@ -132,7 +136,7 @@ public class LockActivity extends MemoBaseActivity<ILockView, LockPresenter> imp
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        System.out.println("===========id====="+id);
+        Log.d("LockActivity", "===========id====="+id);
         switch (id) {
             case R.id.menu_edit_lock:
                 toLockSetting();

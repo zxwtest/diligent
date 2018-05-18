@@ -72,7 +72,6 @@ public class ScheduleDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         id = Integer.parseInt(getIntent().getStringExtra("id"));
-        System.out.println("---id=" + id);
 
         support = new AlarmDBSupport(getApplicationContext());
 

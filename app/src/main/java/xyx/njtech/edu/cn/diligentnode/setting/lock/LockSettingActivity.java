@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+import android.util.Log;
 import android.view.MenuItem;
 
 import xyx.njtech.edu.cn.diligentnode.R;
@@ -48,6 +49,7 @@ public class LockSettingActivity extends MemoBaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        Log.d("LockSettingActivity", "======id==="+id);
         switch (id) {
             case android.R.id.home:
                 onBackPressed();
@@ -58,6 +60,7 @@ public class LockSettingActivity extends MemoBaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("LockSettingActivity", "======requestCode==="+requestCode);
         switch (requestCode) {
             case REQUEST_TO_LOCK:
                 if(resultCode==RESULT_OK){
@@ -89,6 +92,7 @@ public class LockSettingActivity extends MemoBaseActivity {
         }
 
         private void toLockActivity() {
+            Log.d("LockSettingActivity", "======toLockActivity===");
             Intent intent = new Intent();
             if (Constans.isLocked) {
                 intent.setClass(getActivity(), LockActivity.class);

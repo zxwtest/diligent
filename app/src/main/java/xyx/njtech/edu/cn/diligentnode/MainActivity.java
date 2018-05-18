@@ -48,6 +48,7 @@ import java.util.Locale;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import xyx.njtech.edu.cn.diligentnode.utils.PreferencesUtil;
 
 public class MainActivity extends AppCompatActivity implements RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener {
     public static final int REQUEST_TO_LOCK = 1;
@@ -105,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
     //回到今天
     @OnClick(R.id.go_today)
     void goToday() {
-//        homePager.agenda_view.getAgendaListView().scrollToCurrentDate(CalendarManager.getInstance().getToday());
         BusProvider.getInstance().send(new Events.GoBackToDay());
         calendar_view.scrollToDate(CalendarManager.getInstance().getToday(), CalendarManager.getInstance().getWeeks());
     }
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
 
         Utils.init(getApplicationContext());
 
-
+        getCacheData();
 
         //弹窗权限验证
         /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -154,6 +154,11 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
         Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
         intent.setData(Uri.parse("package:" + getPackageName()));
         startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    private void getCacheData(){
+        Constans.isLocked= PreferencesUtil.getBoolean(Constans.IS_LOCKED,Constans.isLocked);
+        Constans.lockPassword=PreferencesUtil.getString(Constans.LOCK_PASSWORD,"");
     }
 
     /**
@@ -307,10 +312,8 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
         }else if(i == 0) {
             Intent intent;
             if (Constans.isLocked) {
-                System.out.println("=================lockActivity=========");
                 intent = new Intent(MainActivity.this, LockActivity.class);
             } else {
-                System.out.println("=================LockModificationActivity=========");
                 intent = new Intent(MainActivity.this, LockModificationActivity.class);
             }
 
@@ -337,7 +340,6 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
     @Override
     protected void onRestart() {
         super.onRestart();
-        System.out.println("---onRestart");
 
     }
 
@@ -351,7 +353,6 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println(requestCode + "====" + requestCode);
         if (requestCode == 1 && resultCode == -1) {
             Intent intent = new Intent(MainActivity.this, NoteMainActivity.class);
             intent.putExtra("groupId", 3);

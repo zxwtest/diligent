@@ -1,5 +1,6 @@
 package xyx.njtech.edu.cn.diligentnode.fragment;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,11 +14,12 @@ import xyx.njtech.edu.cn.diligentnode.MainActivity;
 import xyx.njtech.edu.cn.diligentnode.R;
 import xyx.njtech.edu.cn.diligentnode.db.AlarmDBSupport;
 import xyx.njtech.edu.cn.diligentnode.models.CalendarEvent;
-import xyx.njtech.edu.cn.diligentnode.pager.AboutMePager;
+import xyx.njtech.edu.cn.diligentnode.pager.AboutMeActivity;
 import xyx.njtech.edu.cn.diligentnode.pager.BasePager;
 import xyx.njtech.edu.cn.diligentnode.pager.DayPager;
 import xyx.njtech.edu.cn.diligentnode.pager.HomePager;
 import xyx.njtech.edu.cn.diligentnode.pager.WeekPager;
+import xyx.njtech.edu.cn.diligentnode.setting.main.SettingMainActivity;
 import xyx.njtech.edu.cn.diligentnode.utils.BusProvider;
 import xyx.njtech.edu.cn.diligentnode.utils.CalendarManager;
 import xyx.njtech.edu.cn.diligentnode.utils.Events;
@@ -42,7 +44,6 @@ public class ContentFragment extends BaseFragment {
     private HomePager homePager;
     private DayPager dayPager;
     private WeekPager weekPager;
-    private AboutMePager aboutMePager;
 
 
 
@@ -68,7 +69,6 @@ public class ContentFragment extends BaseFragment {
         homePager = new HomePager(mActivity);
         dayPager = new DayPager(mActivity);
         weekPager = new WeekPager(mActivity);
-        aboutMePager = new AboutMePager(mActivity);
 
         //主界面添加数据
         mPageList= new ArrayList<>();
@@ -76,7 +76,6 @@ public class ContentFragment extends BaseFragment {
         mPageList.add(homePager);
         mPageList.add(dayPager);
         mPageList.add(weekPager);
-        mPageList.add(aboutMePager);
 
         vpContent.setAdapter(new VpContentAdapter());
 
@@ -103,8 +102,10 @@ public class ContentFragment extends BaseFragment {
                         weekPager.initData();
                         break;
                     case R.id.aboutMe:
-                        vpContent.setCurrentItem(3,false);
-                        aboutMePager.initData();
+                        toAboutMeActivity();
+                        break;
+                    case R.id.settings:
+                        toSettingActivity();
                         break;
                 }
                 item.setChecked(true);//点击了设置为选中状态
@@ -113,6 +114,16 @@ public class ContentFragment extends BaseFragment {
             }
         });
 
+    }
+
+    private void toAboutMeActivity(){
+        Intent intent=new Intent(getActivity(), AboutMeActivity.class);
+        getActivity().startActivity(intent);
+    }
+
+    private void toSettingActivity(){
+        Intent intent=new Intent(getActivity(), SettingMainActivity.class);
+        startActivity(intent);
     }
 
     /**

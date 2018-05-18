@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -17,6 +18,7 @@ public class BaseActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         this.mContext = this;
+        Log.d("BaseActivity", "========activity name = [" + getClass().getSimpleName() + "]");
     }
 
     /** 显示吐司 **/
