@@ -27,7 +27,7 @@ public class NoteDao {
     /**
      * 查询所有笔记
      */
-    public List<Note> queryNotesAll(int groupId) {
+    public List<Note> queryNotesAll(int groupId, String searchTitle) {
         SQLiteDatabase db = helper.getWritableDatabase();
         List<Note> noteList = new ArrayList<>();
         Note note ;
@@ -35,8 +35,14 @@ public class NoteDao {
         Cursor cursor = null;
         try {
             if (groupId > 0){
-                sql = "select * from db_note where n_group_id =" + groupId +
-                        " order by n_create_time desc";
+                if(searchTitle != null && !"".equals(searchTitle)){
+                    sql = "select * from db_note where n_group_id =" + groupId
+                            + " and n_title like '%" + searchTitle + "%'"
+                            + " order by n_create_time desc";
+                }else{
+                    sql = "select * from db_note where n_group_id =" + groupId
+                            + " order by n_create_time desc";
+                }
             } else {
                 sql = "select * from db_note " ;
             }

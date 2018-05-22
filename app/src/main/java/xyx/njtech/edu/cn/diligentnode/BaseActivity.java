@@ -21,16 +21,10 @@ public class BaseActivity extends AppCompatActivity {
         Log.d("BaseActivity", "========activity name = [" + getClass().getSimpleName() + "]");
     }
 
-    /** 显示吐司 **/
     public void showToast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
-    /**
-     * 初始化视图控件
-     *
-     * @describe
-     */
     protected void initViews(){
 
     };

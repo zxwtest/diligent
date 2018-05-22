@@ -48,6 +48,7 @@ public class NoteMainActivity  extends BaseActivity {
 
     private void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -116,7 +117,7 @@ public class NoteMainActivity  extends BaseActivity {
                             showToast("删除成功");
                             //TODO 删除笔记成功后，记得删除图片（分为本地图片和网络图片）
                             //获取笔记中图片的列表 StringUtils.getTextFromHtml(note.getContent(), true);
-                            refreshNoteList();
+                            refreshNoteList("");
                         }
                     }
                 });
@@ -127,8 +128,8 @@ public class NoteMainActivity  extends BaseActivity {
     }
 
     //刷新笔记列表
-    private void refreshNoteList(){
-        noteList = noteDao.queryNotesAll(groupId);
+    private void refreshNoteList(String searchTitle){
+        noteList = noteDao.queryNotesAll(groupId, searchTitle);
         mNoteListAdapter.setmNotes(noteList);
         mNoteListAdapter.notifyDataSetChanged();
     }
@@ -142,7 +143,7 @@ public class NoteMainActivity  extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        refreshNoteList();
+        refreshNoteList("");
     }
 
     @Override
@@ -188,12 +189,15 @@ public class NoteMainActivity  extends BaseActivity {
             case R.id.action_caledar:
                 restart();
                 break;
+            case R.id.menu_note_search:
+                //dft
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void initSearchMenu(MenuItem searchItem) {
-        /*SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         // 搜索View的文字改变事件
         searchView.setOnQueryTextListener(qreryTextListener);
 
@@ -207,21 +211,16 @@ public class NoteMainActivity  extends BaseActivity {
 
                         @Override
                         public boolean onMenuItemActionCollapse(MenuItem menuItem) {
-                            //mPresenter.cancelFilter();
-                            //mPresenter.setOutSearch();
+                            refreshNoteList("");
                             return true;
                         }
                     });
         } else {
-            searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-                @Override
-                public boolean onClose() {
-                    //mPresenter.setOutSearch();
-                    //mPresenter.cancelFilter();
+            searchView.setOnCloseListener(() -> {
+                    refreshNoteList("");
                     return true;
-                }
             });
-        }*/
+        }
     }
 
     /**
@@ -235,7 +234,7 @@ public class NoteMainActivity  extends BaseActivity {
 
         @Override
         public boolean onQueryTextChange(String newText) {
-            //mPresenter.setFilter(newText);
+            refreshNoteList(newText);
             return true;
         }
     };

@@ -32,13 +32,13 @@
 
 
     <string name="aboutsoft1">  用心笔记的主要模块功能包括：日历、记事、提醒、记账、密码本、资料、设置、帮助。</string>
-    <string name="aboutsoft2">  用户登录：因为是个人软件，固用户可以直接进人该软件，但考虑到用户数据的安全性，系统提供程序保护功能，用户可在设置中开启程序保护，这样用户在登录软件时，需输人正确的密码才可进人。</string>
-    <string name="aboutsoft3">  日历:提供基础的日历査询，可査看每超级记事本的主要模块功能包括：日历、记事、记事提醒、天气提醒、密码本、资料、更多。</string>
+    <string name="aboutsoft2">  信息防护：因为是个人软件，固用户可以直接进人该软件，但考虑到用户数据的安全性，系统提供私密信息保护功能，只有输入正确信息才能进入私密界面。</string>
+    <!--<string name="aboutsoft3">  日历:提供基础的日历査询，可査看每超级记事本的主要模块功能包括：日历、记事、记事提醒、天气提醒、密码本、资料、更多。</string>-->
     <!--<string name="aboutsoft4">用户登录：用户在登录软件时，需输人正确的密码才可进人。</string>-->
     <string name="aboutsoft5">  日历:提供基础的日历査询，可査看每日记事和待办事项，可点击某一日期，新建记事和事项。</string>
     <string name="aboutsoft6">  记事:对记事进行增删改查，还可以添加图片。</string>
     <string name="aboutsoft7">  记事提醒:定时提醒。</string>
-    <string name="aboutsoft8">  天气提醒：可查看当天和未来三天天气。</string>
+    <string name="aboutsoft8">  天气提醒：可查看当天和未来两天天气、空气质量和生活建议信息。</string>
     <string name="aboutsoft9">  私密:可保存账号密码、査看、新添、删除记录。</string>
     <string name="aboutsoft10">  便签功能。</string>
 </resources>
