@@ -25,11 +25,7 @@ import xyx.njtech.edu.cn.diligentnode.bean.calendar.Note;
 import xyx.njtech.edu.cn.diligentnode.db.calendar.DBServer;
 import xyx.njtech.edu.cn.diligentnode.BaseActivity;
 
-/**
- *
- * @author xyx
- *
- */
+
 public class CaledarActivity extends BaseActivity {
 
 	CalendarView calendarView = null; //日历控件

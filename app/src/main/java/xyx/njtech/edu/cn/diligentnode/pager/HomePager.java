@@ -120,7 +120,7 @@ public class HomePager extends BasePager implements StickyListHeadersListView.On
      */
     @Override
     public void onStickyHeaderChanged(StickyListHeadersListView l, View header, int itemPosition, long headerId) {
-        Log.d(LOG_TAG, String.format("onStickyHeaderChanged, position = %d, headerId = %d", itemPosition, headerId));
+        //Log.d(LOG_TAG, String.format("onStickyHeaderChanged, position = %d, headerId = %d", itemPosition, headerId));
 
         if (CalendarManager.getInstance().getEvents().size() > 0) {
             CalendarEvent event = CalendarManager.getInstance().getEvents().get(itemPosition);

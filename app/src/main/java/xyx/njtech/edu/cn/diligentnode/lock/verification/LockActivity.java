@@ -81,8 +81,6 @@ public class LockActivity extends MemoBaseActivity<ILockView, LockPresenter> imp
 
     @Override
     protected void initViews() {
-        System.out.println("==========LockActivity initViews=========");
-        Log.e("LockActivity", "================enter initView==========");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initData();
         setTitle(mTitle);

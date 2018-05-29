@@ -48,6 +48,7 @@ public class NoteDetailActivity extends BaseActivity {
 
     private ProgressDialog loadingDialog;
     private Subscription subsLoading;
+    private int groupId = 1;//分类ID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +104,8 @@ public class NoteDetailActivity extends BaseActivity {
         myGroupName = group.getName();
 
         tv_note_title.setText(myTitle);
+
+        groupId = intent.getIntExtra("groupId", 1);
         tv_note_content.post(new Runnable() {
             @Override
             public void run() {
@@ -196,6 +199,7 @@ public class NoteDetailActivity extends BaseActivity {
                 bundle.putSerializable("note", note);
                 intent.putExtra("data", bundle);
                 intent.putExtra("flag", 1);//编辑笔记
+                intent.putExtra("groupId", groupId);
                 startActivity(intent);
                 finish();
                 break;

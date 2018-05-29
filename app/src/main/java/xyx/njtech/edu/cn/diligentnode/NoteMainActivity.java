@@ -98,6 +98,7 @@ public class NoteMainActivity  extends BaseActivity {
                 Intent intent = new Intent(NoteMainActivity.this, NoteDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("note", note);
+                intent.putExtra("groupId", groupId);
                 intent.putExtra("data", bundle);
                 startActivity(intent);
             }

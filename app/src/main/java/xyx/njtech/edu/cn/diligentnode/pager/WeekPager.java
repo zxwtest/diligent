@@ -66,7 +66,7 @@ public class WeekPager extends BasePager {
 
     }
 
-    /**
+      /**
      * 点击 CalendarView 选择不同的日期
      */
     private void chooseDayFromClick(){

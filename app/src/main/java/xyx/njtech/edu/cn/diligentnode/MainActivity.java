@@ -42,6 +42,7 @@ import xyx.njtech.edu.cn.diligentnode.utils.PrefUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
     //月份
     @Bind(R.id.title_day)
     TextView title_day;
-    //日程 ListView
+    //提醒列表 ListView
     @Bind(R.id.main_frame)
     FrameLayout main_frame;
 
@@ -134,17 +135,6 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
         Utils.init(getApplicationContext());
 
         getCacheData();
-
-        //弹窗权限验证
-        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            isAllowAlert = PrefUtils.getBoolean(this,"isAllowAlert",false);
-            if(!isAllowAlert){
-                showPermissionDialog();
-            }
-        }else {
-            SendAlarmBroadcast.startAlarmService(this);
-        }*/
-
     }
 
     //权限申请相关方法
@@ -190,7 +180,8 @@ public class MainActivity extends AppCompatActivity implements RapidFloatingActi
         calendar_view.findViewById(R.id.cal_day_names).setBackgroundColor(getResources().getColor(mCalendarHeaderColor));
 
         // CalendarView 初始化,完成布局的初始化，数据的绑定,日期的显示
-        calendar_view.init(CalendarManager.getInstance(this), getResources().getColor(mCalendarDayTextColor), getResources().getColor(mCalendarCurrentDayColor), getResources().getColor(mCalendarPastDayTextColor));
+        calendar_view.init(CalendarManager.getInstance(this), getResources().getColor(mCalendarDayTextColor), getResources()
+                .getColor(mCalendarCurrentDayColor), getResources().getColor(mCalendarPastDayTextColor));
 
         //填充 Fragment
         FragmentManager manager =getFragmentManager();

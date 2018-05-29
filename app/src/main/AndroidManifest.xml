@@ -26,7 +26,7 @@
 
         <activity android:name=".GuideActivity" android:theme="@style/FullWindows"/>
         <activity android:name=".AddScheduleActivity"/>
-        <activity android:name="xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetRePlayActivity"/>
+        <activity android:name=".alarmsetactivity.SetRePlayActivity"/>
         <activity android:name="xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetAlarmTimeActivity"/>
         <activity android:name="xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetLocalActivity"/>
         <activity android:name="xyx.njtech.edu.cn.diligentnode.alarmsetactivity.SetColorActivity"/>

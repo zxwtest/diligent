@@ -107,7 +107,7 @@ public class ChooseAreaFragment extends Fragment {
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
                     queryCounties();
-                } else if (currentLevel == LEVEL_COUNTY) {
+                } else if (currentLevel == LEVEL_COUNTY) {//从省市界面列表跳转回天气界面
                     String weatherId = countyList.get(position).getWeatherId();
                     if (getActivity() instanceof WeatherMainActivity) {
                         Intent intent = new Intent(getActivity(), WeatherActivity.class);
@@ -133,7 +133,7 @@ public class ChooseAreaFragment extends Fragment {
                 }
             }
         });
-        queryProvinces();
+        queryProvinces();//加载省级数据
     }
 
     /**
@@ -152,7 +152,7 @@ public class ChooseAreaFragment extends Fragment {
             listView.setSelection(0);
             currentLevel = LEVEL_PROVINCE;
         } else {
-            String address = "http://guolin.tech/api/china";
+            String address = "http://guolin.tech/api/china";//从接口读取数据
             queryFromServer(address, "province");
         }
     }

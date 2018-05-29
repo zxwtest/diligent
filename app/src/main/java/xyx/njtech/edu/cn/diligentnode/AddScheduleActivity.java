@@ -289,10 +289,7 @@ public class AddScheduleActivity extends AppCompatActivity {
             alarm_description.setText(bean.getDescription());
             alarm_local.setText(bean.getLocal());
             alarm_replay.setText(bean.getReplay());
-//            alarm_date.setText(DateHelper.getScheduleDate(bean));
-//            alarm_start_time.setText(DateHelper.getStartTime(bean));
-//            alarm_end_time.setText(DateHelper.getEndTime(bean));
-            insert_update_title.setText("修改活动");
+            insert_update_title.setText("修改提醒");
             //动态改变颜色
             int colorId = ColorUtils.getColorFromStr(bean.getAlarmColor());
             action_bar.setBackgroundColor(getResources().getColor(colorId));

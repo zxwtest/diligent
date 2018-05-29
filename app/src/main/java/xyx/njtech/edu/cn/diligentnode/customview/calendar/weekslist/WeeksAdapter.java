@@ -21,10 +21,13 @@ import xyx.njtech.edu.cn.diligentnode.utils.CalendarManager;
 import xyx.njtech.edu.cn.diligentnode.utils.DateHelper;
 import xyx.njtech.edu.cn.diligentnode.utils.Events;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class WeeksAdapter extends RecyclerView.Adapter<WeeksAdapter.WeekViewHolder> {
 
@@ -242,6 +245,20 @@ public class WeeksAdapter extends RecyclerView.Adapter<WeeksAdapter.WeekViewHold
                     //当前日期的年数不等于这个星期的年数，则需要在mTxtMonth上加上年份
                     if (today.get(Calendar.YEAR) != weekItem.getYear()) {
                         month = month + String.format(" %d", weekItem.getYear());
+                    }
+
+                    if("七月 2017".equals(month) || "八月 2017".equals(month)){
+                        SimpleDateFormat sdf = new SimpleDateFormat("MM");
+                        Calendar calendar = Calendar.getInstance();
+                        int mm = calendar.get(Calendar.MONTH) + 1;
+                        Date date = null;
+                        try {
+                            date = sdf.parse(mm + "");
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        sdf = new SimpleDateFormat("MMMM", Locale.CHINA);
+                        month = sdf.format(date);
                     }
                     mTxtMonth.setText(month);
                     BusProvider.getInstance().send(new Events.CalendarMonthEvent(month));
